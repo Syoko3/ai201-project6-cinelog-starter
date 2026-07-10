@@ -12,8 +12,8 @@
 **How I verified:** I verified this change by using the flask shell, adding the sample film to the database, and adding this film to the watchlist 2 times. When adding it at the second time, the entry user_id is same as the first time, which confirms that the deduplication logic works.
 
 ## Comment 3 — Missing test
-**What I did:**
-**How I verified:**
+**What I did:** I added the test case in tests/test_watchlist.py for add_to_watchlist(user_id, film_id) for making sure to raise an error when adding a nonexistent film in the database to the watchlist.
+**How I verified:** I verified by running pytest tests/test_watchlist.py -v and confirming it passed. I also ran pytest tests/ -v to confirm no test suites crashed.
 
 ## Comment 4 — Default visibility
 **My position:**
