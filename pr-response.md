@@ -8,8 +8,8 @@
 **How I verified:** I verified this change by restarting the flask server since it got crashed due to the ImportError at routes/watchlist/watchlist.py. After I reran the server, I did not get any errors or crashed out.
 
 ## Comment 2 — Deduplication
-**What I did:**
-**How I verified:**
+**What I did:** I added the deduplication logic to the add_to_watchlist(user_id, film_id) by following the same logic in add_to_collection(user_id, film_id, rating=None) in services/collection_service.py. When the duplicate is detected, it just returns the existing entry instead of creating a new one.
+**How I verified:** I verified this change by using the flask shell, adding the sample film to the database, and adding this film to the watchlist 2 times. When adding it at the second time, the entry user_id is same as the first time, which confirms that the deduplication logic works.
 
 ## Comment 3 — Missing test
 **What I did:**
