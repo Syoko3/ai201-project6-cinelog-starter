@@ -16,14 +16,14 @@
 **How I verified:** I verified by running pytest tests/test_watchlist.py -v and confirming it passed. I also ran pytest tests/ -v to confirm no test suites crashed.
 
 ## Comment 4 — Default visibility
-**My position:**
-**Reasoning:**
-**Tradeoff acknowledged:**
+**My position:** Keep `public=True` as the default setting when a user creates or adds a film to their watchlist. 
+**Reasoning:** CineLog is a community film tracking platform that comes from the community interaction, film discovery, and sharing recommendations with friends. Making the watchlists public can reduce friction for users who want to share the movie tastes with each other or see what their friends plan to watch next.
+**Tradeoff acknowledged:** The tradeoff is the user privacy that if a user wants their watchlist to be private but forgets to change the visibility setting, they will show a personal list of films in public. However, optimizing for community discovery follows the CineLog's primary platform goals, and the privacy risk can be improved by letting the user to change the visibility settings.
 
 ## Comment 5 — Sort order
-**My position:**
-**Reasoning:**
-**Engagement with reviewer's point:**
+**My position:** Update the watchlist order by most recently date-added when a user creates or adds a film to their watchlist.
+**Reasoning:** A watchlist is a dynamic queue, not a static library index, so when a user adds a film, their interest in watching that specific movie is at its peak. Sorting by the newest additions ensures these high-interest films are immediately accessible from the top of the watchlist and most users see what they added recently.
+**Engagement with reviewer's point:** The maintainer is correct that an alphabetical sort forces unnecessary scrolling for active users trying to find their latest additions. Switching to a chronological order can resolve this friction so that all users can see what they added recently on the list.
 
 ## Comment 6 — Rebase
 **What conflicted:**
