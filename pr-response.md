@@ -26,9 +26,9 @@
 **Engagement with reviewer's point:** The maintainer is correct that an alphabetical sort forces unnecessary scrolling for active users trying to find their latest additions. Switching to a chronological order can resolve this friction so that all users can see what they added recently on the list.
 
 ## Comment 6 — Rebase
-**What conflicted:**
-**How I resolved it:**
-**How I verified no conflict remains:**
+**What conflicted:** The upstream main branch migrated Film.id from an integer to a UUID string, causing a structural mismatch with the WatchlistEntry schema which was still expecting an integer film_id.
+**How I resolved it:** I fetched origin and rebased feature/watchlist onto origin/main. Then, I updated the WatchlistEntry class in models.py to change the film_id key column to `db.String(36)` to match the updated Film model UUID structure. I also modified the docstrings in routes/watchlist/watchlist.py and services/watchlist_service.py to define that film_id is the UUID of the film.
+**How I verified no conflict remains:** I verified no conflict remains by rerunning the flask server and getting none of the errors, and running the pytests again and ensured that the watchlist and collection code still work with the UUID-based model. I also ran `git log --merges --oneline` command to confirm that the history is completely linear and free of merge commits
 
 ## PR Description
 <!-- Written at the end — feature overview, design decisions, manual testing steps -->
